@@ -1,0 +1,58 @@
+﻿Program Instructions:
+
+	With the given instructions the given user inputs can be the following:
+
+		load image (imageName, destination)
+
+		save image(imageName, destination)
+
+		exit
+
+		red-component(imageName, destination)
+
+		green-component(imageName, destination)
+
+ 		blue-component(imageName, destination)
+
+		value-component(imageName, destination)
+
+		intensity-component(imageName, destination)
+
+		luma-component(imageName, destination)
+
+		brighten(integer, imageName, destination)
+
+		darken(integer, imageName, destination)
+
+		blur(imageName, destination)
+
+		sharpen(imageName, destination)
+
+		greyscale(imageName, destination)
+
+		sepiatone(imageName, destination)
+
+Simple Notes about each command:
+
+The imageName is the given path of the image which has the imageName and the file type
+The destination is the name of the image which is loaded and the name you want to save it by - usually the command which is applied.
+the integer is given for the lighting commands which take the given integer and brighten or darken by the given value.
+
+Type this script when the program runs:
+	load (rec/tiger.jpg) (img)
+	red-component (rec/tiger.jpg) (red-tiger)
+	blur (rec/tiger.jpg) (tigerBlur)
+	sharpen (rec/tiger.jpg) (tigerSharpen)
+	sepiatone (rec/tiger.jpg) (tigerSepia)
+	save (red-tiger.jpg) (red-tiger)
+	save (tigerBlur.jpg) (blur-tiger)
+	save (tigerSharpen.jpg) (sharpen-tiger)
+	save (tigerSepia.jpg) (sepia-tiger)
+	exit
+
+
+Output of Script:
+
+loads the tiger jpg image it then runs the red-component command on the image, then goes through the other commands which are blur, sharpen
+(these apply the given matrix to the image to get the effect) and sepiatone which then does the color transformation by also applying the given matrix.
+it then saves each of the images and quits the program with the new images.
