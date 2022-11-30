@@ -3,7 +3,7 @@ package controller.command2;
 import java.awt.Color;
 
 import model.ImageIOModel;
-import util.Pixel;
+import Color.Pixel;
 
 /**
  * This is the image filter IO which can blur or sharpen a bufferedImage.
@@ -50,7 +50,6 @@ public class ImageFilterIO extends AbstractIOCommands {
     double pGreen = 0.0;
     double pBlue = 0.0;
     int matHalfLength = filterMatrix.length / 2;
-    int matLength = filterMatrix.length;
     int matRow = 0;
     for (int i = -matHalfLength + row; i < matHalfLength + row; i++) {
       int matCol = 0;

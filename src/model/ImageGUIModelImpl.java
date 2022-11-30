@@ -48,8 +48,9 @@ public class ImageGUIModelImpl extends ImageIOModelImpl implements ImageGUIModel
    */
   @Override
   public void loadOtherImage(String image) {
-    super.bufferedImage = super.savedBuffImage.get(image);
     super.userImageName = image;
+    super.bufferedImage = super.savedBuffImage.get(image);
+
   }
 }
 

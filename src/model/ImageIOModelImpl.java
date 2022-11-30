@@ -4,16 +4,14 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 import util.ImageUtil;
-import util.Pixel;
+import Color.Pixel;
 
 /**
  * the image model implementation for the bufferedImage which handles the different file types.
@@ -42,7 +40,7 @@ public class ImageIOModelImpl implements ImageIOModel {
    * @throws IllegalArgumentException if it does not exist
    */
   public ImageIOModelImpl(String imagePath, String modelImageName) throws IllegalArgumentException {
-    if (imagePath == null || modelImageName == null) {
+    if (imagePath == null) {
       throw new IllegalArgumentException("Must provide values for path and name");
     }
     this.userImageName = modelImageName;
@@ -52,11 +50,11 @@ public class ImageIOModelImpl implements ImageIOModel {
 
   @Override
   public BufferedImage retrieveIOImage(String userImageName) throws IllegalArgumentException {
-    if (userImageName == this.userImageName) {
+    if (userImageName.equals(this.userImageName)) {
       return this.bufferedImage;
     } else {
       for (Map.Entry<String, BufferedImage> bufferedEntry : this.savedBuffImage.entrySet()) {
-        if (bufferedEntry.getKey() == userImageName) {
+        if (bufferedEntry.getKey().equals(userImageName)) {
           return savedBuffImage.get(userImageName);
         }
       }
@@ -98,8 +96,6 @@ public class ImageIOModelImpl implements ImageIOModel {
     }else{
       try {
         image = ImageIO.read(new FileInputStream(path));
-      } catch (FileNotFoundException e) {
-        throw new IllegalArgumentException("File not found");
       } catch (IOException e) {
         throw new IllegalArgumentException("IO Exception");
       }
@@ -116,9 +112,6 @@ public class ImageIOModelImpl implements ImageIOModel {
 
   @Override
   public void saveImage(String path, String userImageName) {
-    if (path == null || userImageName == null) {
-      throw new IllegalArgumentException("path or image name cannot be null");
-    }
     String fileType = this.retrieveFileType(path);
     if(fileType.equals("ppm")){
       Color[][] image = ImageUtil.bufferedToPPM(this.retrieveIOImage(userImageName));
@@ -127,7 +120,6 @@ public class ImageIOModelImpl implements ImageIOModel {
       BufferedImage image = this.savedBuffImage.get(userImageName);
       try {
         ImageIO.write(image, fileType, new File(path));
-        this.userImageName = userImageName;
       } catch (IOException e) {
         throw new IllegalArgumentException(userImageName + " is not a supported image");
       }

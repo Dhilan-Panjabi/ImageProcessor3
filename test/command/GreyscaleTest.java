@@ -143,7 +143,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void greyscaleValue() {
+  public void greyscaleValueTest() {
     Color[][] ppm1 = this.valueGrey1.imageOutput();
     assertEquals(new Color(3, 3, 3), ppm1[0][0]);
     assertEquals(new Color(6, 6, 6), ppm1[0][1]);
@@ -159,7 +159,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void intensityValue() {
+  public void intensityValueTest() {
 
     Color[][] ppm1 = this.intensityGrey1.imageOutput();
     assertEquals(new Color(2, 2, 2), ppm1[0][0]);
@@ -175,7 +175,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void lumaValue() {
+  public void lumaValueTest() {
     Color[][] ppm1 = this.lumaGrey1.imageOutput();
     assertEquals(new Color(1, 1, 1), ppm1[0][0]);
     assertEquals(new Color(4, 4, 4), ppm1[0][1]);
@@ -192,7 +192,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void redValue() {
+  public void redValueTest() {
 
     Color[][] ppm1 = this.redGrey1.imageOutput();
     assertEquals(new Color(1, 1, 1), ppm1[0][0]);
@@ -210,7 +210,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void greenValue() {
+  public void greenValueTest() {
     Color[][] ppm1 = this.greenGrey1.imageOutput();
     assertEquals(new Color(2, 2, 2), ppm1[0][0]);
     assertEquals(new Color(5, 5, 5), ppm1[0][1]);
@@ -230,7 +230,7 @@ public class GreyscaleTest {
   }
 
   @Test
-  public void blueValue() {
+  public void blueValueTest() {
 
     Color[][] ppm1 = this.blueGrey1.imageOutput();
     assertEquals(new Color(3, 3, 3), ppm1[0][0]);

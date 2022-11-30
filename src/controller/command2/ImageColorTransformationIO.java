@@ -3,7 +3,7 @@ package controller.command2;
 import java.awt.Color;
 
 import model.ImageIOModel;
-import util.Pixel;
+import Color.Pixel;
 
 /**
  * Image command which takes in the color transformation and either makes it sepiatone or greyscale
@@ -45,17 +45,18 @@ public class ImageColorTransformationIO extends AbstractIOCommands {
 
   private Color applyTransformation(Color color) {
     int red = color.getRed();
-    int green = color.getGreen();
     int blue = color.getBlue();
+    int green = color.getGreen();
     int transformRed = (int) ((this.transformMatrix[0][0] * red) +
             (this.transformMatrix[0][1] * green) +
             (this.transformMatrix[0][2] * blue));
-    int transformGreen = (int) ((this.transformMatrix[1][0] * red) +
-            (this.transformMatrix[1][1] * green) +
-            (this.transformMatrix[1][2] * blue));
     int transformBlue = (int) ((this.transformMatrix[2][0] * red) +
             (this.transformMatrix[2][1] * green) +
             (this.transformMatrix[2][2] * blue));
+    int transformGreen = (int) ((this.transformMatrix[1][0] * red) +
+            (this.transformMatrix[1][1] * green) +
+            (this.transformMatrix[1][2] * blue));
+
     return new Color(Pixel.checkValue(transformRed), Pixel.checkValue(transformGreen),
             Pixel.checkValue(transformBlue));
   }

@@ -12,12 +12,9 @@ import static org.junit.Assert.assertEquals;
 public class ImageModelImplTest {
 
   ImageModel model1;
-  ImageModel model2;
-
-  ImageModel model3;
 
   @Test
-  public void testInvalidProcessandSave() {
+  public void ProcessSaveTest() {
     this.model1 = new ImageModelImpl();
     try {
       this.model1.processImage(null, "something");
@@ -40,7 +37,7 @@ public class ImageModelImplTest {
   }
 
   @Test
-  public void testRetrievePixel() {
+  public void retrievePixeltest() {
     this.model1 = new ImageModelImpl("rec/Koala.ppm", "koala");
     assertEquals(101, this.model1.retrievePixel(0, 0).getRed());
     assertEquals(54, this.model1.retrievePixel(1, 4).getBlue());
@@ -48,7 +45,7 @@ public class ImageModelImplTest {
   }
 
   @Test
-  public void testRetrievePixel2() {
+  public void retrievePixeltest2() {
     this.model1 = new ImageModelImpl("rec/dog.ppm", "dogphoto");
     assertEquals(101, this.model1.retrievePixel(0, 0).getRed());
     assertEquals(54, this.model1.retrievePixel(1, 4).getBlue());
@@ -62,14 +59,6 @@ public class ImageModelImplTest {
     assertEquals(768, this.model1.getRow());
     assertEquals(1024, this.model1.getCol());
     this.model1.processImage("rec/Koala.ppm", "Koala");
-    this.model2 = new ImageModelImpl("rec/smallImage.ppm", "smallImage");
-    assertEquals(4, this.model2.getRow());
-    assertEquals(4, this.model2.getCol());
-    this.model2.processImage("rec/smallImage.ppm", "smallImage");
-    this.model3 = new ImageModelImpl(); // defaults row and columns to 0
-    assertEquals(0, this.model3.getRow());
-    assertEquals(0, this.model3.getCol());
-    this.model3.processImage("rec/Koala.ppm", "Koala");
   }
 
   @Test

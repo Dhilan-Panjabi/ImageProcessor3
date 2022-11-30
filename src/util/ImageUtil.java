@@ -1,4 +1,5 @@
 package util;
+import Color.Pixel;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

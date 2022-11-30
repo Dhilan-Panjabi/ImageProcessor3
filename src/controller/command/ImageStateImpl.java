@@ -39,12 +39,10 @@ public class ImageStateImpl extends AbstractPPMCommands {
         this.saveEditedImage();
         return;
       default:
-        throw new IllegalArgumentException("No such command" + commandType + "exists");
+        throw new IllegalArgumentException("This command does not exist");
     }
   }
 
-
-  //controls the vertical flip to be called
   private void verticalFlip() {
     int width = this.col;
     int height = this.row;
@@ -56,8 +54,6 @@ public class ImageStateImpl extends AbstractPPMCommands {
       }
     }
   }
-
-  //controls the horizontal flip to be called
   private void horizontalFlip() {
     int width = this.col;
     int height = this.row;

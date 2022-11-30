@@ -3,7 +3,7 @@ package controller.command2;
 import java.awt.Color;
 
 import model.ImageIOModel;
-import util.Pixel;
+import Color.Pixel;
 
 /**
  * the greyscale class which takes in the bufferedImage which then applies the commands to.

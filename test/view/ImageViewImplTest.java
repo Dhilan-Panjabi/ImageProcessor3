@@ -28,42 +28,20 @@ public class ImageViewImplTest {
     this.appendable = new StringBuilder();
     this.model1 = new ImageModelImpl();
     this.model2 = new ImageModelImpl("rec/smallImage.ppm", "smallImage");
-    this.view = new ImageViewImpl(this.model1, this.appendable);
+    this.view = new ImageViewImpl(null, this.appendable);
     this.view2 = new ImageViewImpl(this.model2, this.appendable);
   }
 
   @Test
   public void testInvalidImageView() {
     try {
-      ImageView v1 = new ImageViewImpl(null, this.appendable);
-      fail();
-    } catch (IllegalArgumentException e) {
-      assertEquals("must pass through a model and output", e.getMessage());
-    }
-    try {
-      ImageView v2 = new ImageViewImpl(this.model1, null);
-      fail();
-    } catch (IllegalArgumentException e) {
-      assertEquals("must pass through a model and output", e.getMessage());
-    }
-    try {
-      ImageView v3 = new ImageViewImpl(null, null);
+      this.view = new ImageViewImpl(null, this.appendable);
       fail();
     } catch (IllegalArgumentException e) {
       assertEquals("must pass through a model and output", e.getMessage());
     }
   }
 
-
-  @Test
-  public void testToString() {
-    assertEquals("", this.view.toString());
-    assertEquals("r: 255,g: 0,b: 0r: 14,g: 0,b: 255r: 255,g: 0,b: 0r: 14,g: 0,b: 255\n" +
-                    "r: 14,g: 0,b: 255r: 255,g: 0,b: 0r: 14,g: 0,b: 255r: 31,g: 255,b: 0\n" +
-                    "r: 255,g: 0,b: 0r: 31,g: 255,b: 0r: 31,g: 255,b: 0r: 14,g: 0,b: 255\n" +
-                    "r: 14,g: 0,b: 255r: 255,g: 0,b: 0r: 14,g: 0,b: 255r: 31,g: 255,b: 0\n",
-            this.view2.toString());
-  }
 
   @Test
   public void renderImage() {
@@ -81,10 +59,10 @@ public class ImageViewImplTest {
   @Test
   public void renderMessage() {
     StringBuilder log = new StringBuilder();
-    ImageView ex1 = new ImageViewImpl(new ImageModelImpl(), log);
+    ImageView example = new ImageViewImpl(new ImageModelImpl(), log);
     try {
-      ex1.renderMessage("fun");
-      assertEquals("fun" + System.lineSeparator(), log.toString());
+      example.renderMessage("kevin");
+      assertEquals("kevin" + System.lineSeparator(), log.toString());
     } catch (IOException e) {
       fail();
     }

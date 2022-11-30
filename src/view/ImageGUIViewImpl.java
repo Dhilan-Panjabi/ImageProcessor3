@@ -53,10 +53,14 @@ public class ImageGUIViewImpl extends JFrame implements ImageGUIView {
 
   private final JComboBox<String> fileType;
 
+  /**
+   * Main constructor for GUI view that has an image from the model.
+   */
+
   public ImageGUIViewImpl(){
     this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     this.setUndecorated(false);
-    this.setMinimumSize(new Dimension(1000, 1000));
+    this.setMinimumSize(new Dimension(500, 500));
     this.setLayout(new BorderLayout());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -71,14 +75,13 @@ public class ImageGUIViewImpl extends JFrame implements ImageGUIView {
     this.rgbHistogramScroll = new JScrollPane(this.rgbHistogram,
             JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-    this.rgbHistogram.setPreferredSize(new Dimension(500, 500));
+    this.rgbHistogram.setPreferredSize(new Dimension(250, 250));
     this.rgbHistogramScroll.setPreferredSize(rgbHistogram.getPreferredSize());
     this.rgbHistogramScroll.setViewportView(this.rgbHistogram);
     this.add(this.rgbHistogramScroll, BorderLayout.LINE_END);
 
-  //
     JPanel listOfImages = new JPanel();
-    listOfImages.setPreferredSize(new Dimension(200, 200));
+    listOfImages.setPreferredSize(new Dimension(100, 100));
     listOfImages.setBorder(BorderFactory.createTitledBorder("List of Images"));
     JScrollPane scroll = new JScrollPane(listOfImages, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

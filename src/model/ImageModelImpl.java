@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-import util.Pixel;
+import Color.Pixel;
 
 
 /**
@@ -64,14 +64,8 @@ public class ImageModelImpl implements ImageModel {
 
   @Override
   public void processImage(String imagePath, String imageName) throws IllegalArgumentException {
-    if (imagePath == null && imageName == null) {
-      throw new IllegalArgumentException("image path and image name cannot be null");
-    }
-    if (imagePath == null) {
-      throw new IllegalArgumentException("image path cannot be null");
-    }
-    if (imageName == null) {
-      throw new IllegalArgumentException("the image name cannot be null");
+    if (imagePath == null || imageName == null) {
+      throw new IllegalArgumentException("You must have an image path and image name");
     }
 
     Scanner fileScan;

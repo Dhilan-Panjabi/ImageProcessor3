@@ -21,11 +21,11 @@ public class ImageRGBHistogram extends JPanel {
 
   private int height;
 
-  private int width = (256 * barWidth) + 6;
+  private int width = (256 * BAR_WIDTH) + 6;
 
-  private static final int barHeight = 1;
+  private static final int BAR_HEIGHT = 1;
 
-  private static final int barWidth = 2;
+  private static final int BAR_WIDTH = 2;
 
   /**
    * The constructor for the RGB histogram.
@@ -34,8 +34,13 @@ public class ImageRGBHistogram extends JPanel {
     super();
   }
 
+  /**
+   * sets the image panel to the given image.
+   * @param image name of the displayed image.
+   */
 
   public void imageSetter(BufferedImage image) {
+    this.colorValues = new int[4][256];
     Color pixel;
     for(int i = 0; i < image.getWidth(); i++){
       for(int j = 0; j < image.getHeight(); j++){
@@ -67,7 +72,7 @@ public class ImageRGBHistogram extends JPanel {
 
     this.maxNumScale = this.maxNum / 256;
 
-    this.height = (this.colorValues.length * barHeight * 256) + (3 * 2);
+    this.height = (this.colorValues.length * BAR_HEIGHT * 256) + (3 * 2);
     this.setSize(new Dimension(this.width, this.height * this.colorValues.length));
     this.setPreferredSize(new Dimension(this.width, this.height * this.colorValues.length));
 
@@ -98,6 +103,9 @@ public class ImageRGBHistogram extends JPanel {
       Graphics2D graphics2D = (Graphics2D) graphics.create();
       int afterBoxY = this.height + 15;
       int nextLineY = 11;
+      graphics2D.drawString("Max Count of Color is " + this.maxNum
+                      + " each bar is a value from 0 to 255, left to right.", 3,
+              afterBoxY);
       graphics2D.drawString(" = Red Component", 3, afterBoxY + nextLineY);
       graphics2D.drawString(" = Green Component", 3, afterBoxY + (nextLineY * 2));
       graphics2D.drawString(" = Blue Component", 3, afterBoxY + (nextLineY * 3));
@@ -109,6 +117,11 @@ public class ImageRGBHistogram extends JPanel {
         graphics2D.fill(square);
         graphics2D.draw(square);
       }
+      graphics2D.setColor(Color.black);
+      graphics2D.drawString(
+              "Min Count of a Color is " + this.minNum + " the lowest bar is at this count too",
+              3,
+              afterBoxY + (nextLineY * 5));
 
       int posnX;
       int posnY;
@@ -124,12 +137,12 @@ public class ImageRGBHistogram extends JPanel {
         graphics2D.setColor(color);
         for (int pValue = 0; pValue < 256; pValue++) {
           int newCount = (int) ((compValues[pValue] - minNum) / this.maxNumScale);
-          barHeightValue = (3 * 2) + (newCount * barHeight);
+          barHeightValue = (3 * 2) + (newCount * BAR_HEIGHT);
           posnY = currentHeight + (3 * 2) - barHeightValue;
-          Rectangle2D bar = new Rectangle2D.Double(posnX, posnY, barWidth, barHeightValue);
+          Rectangle2D bar = new Rectangle2D.Double(posnX, posnY, BAR_WIDTH, barHeightValue);
           graphics2D.fill(bar);
           graphics2D.draw(bar);
-          posnX += barWidth;
+          posnX += BAR_WIDTH;
         }
       }
     }

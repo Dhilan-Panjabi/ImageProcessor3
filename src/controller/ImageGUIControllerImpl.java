@@ -46,10 +46,6 @@ public class ImageGUIControllerImpl extends AbstractController implements ImageG
     super(model);
     Objects.requireNonNull(model);
     this.model = model;
-    this.inputCommands.put("load", (s) -> new ImageControlIO("load",
-            this.checkString(s), this.checkString(s), this.model));
-    this.inputCommands.put("save", (s) -> new ImageControlIO("save",
-            this.checkString(s), this.checkString(s), this.model));
     this.inputCommands.put("brighten",
             (s) -> new ImageLightingIO(this.checkInt(s), this.checkString(s),
                     this.checkString(s), this.model, "brighten"));
@@ -62,11 +58,6 @@ public class ImageGUIControllerImpl extends AbstractController implements ImageG
     this.inputCommands.put("value-component",
             (s) -> new Greyscale("value-component", this.checkString(s),
                     this.model, this.checkString(s)));
-    this.inputCommands.put("red-component", (s) -> new ImageGreyscaleIO("red-component", this.checkString(s),
-             this.model, this.checkString(s)));
-    this.inputCommands.put("green-component",
-            (s) -> new Greyscale("green-component", this.checkString(s),
-                    this.model, this.checkString(s)));
     this.inputCommands.put("blue-component", (s) -> new ImageGreyscaleIO("blue-component", this.checkString(s),
              this.model,  this.checkString(s)));
     this.inputCommands.put("intensity-component",
@@ -74,14 +65,23 @@ public class ImageGUIControllerImpl extends AbstractController implements ImageG
                     this.model, this.checkString(s)));
     this.inputCommands.put("luma-component", (s) -> new ImageGreyscaleIO("luma-component", this.checkString(s),
              this.model, this.checkString(s)));
-    this.inputCommands.put("Blur", (s) -> new ImageFilterIO("Blur", this.checkString(s),
-             this.model, this.checkString(s)));
-    this.inputCommands.put("Sharpen", (s) -> new ImageFilterIO("Sharpen",
-            this.checkString(s), this.model, this.checkString(s)));
     this.inputCommands.put("greyscale", (s) -> new ImageColorTransformationIO("greyscale", this.checkString(s),
             this.model, this.checkString(s)));
     this.inputCommands.put("sepia", (s) -> new ImageColorTransformationIO("sepia", this.checkString(s),
             this.model, this.checkString(s)));
+    this.inputCommands.put("load", (s) -> new ImageControlIO("load",
+            this.checkString(s), this.checkString(s), this.model));
+    this.inputCommands.put("save", (s) -> new ImageControlIO("save",
+            this.checkString(s), this.checkString(s), this.model));
+    this.inputCommands.put("Blur", (s) -> new ImageFilterIO("Blur", this.checkString(s),
+            this.model, this.checkString(s)));
+    this.inputCommands.put("Sharpen", (s) -> new ImageFilterIO("Sharpen",
+            this.checkString(s), this.model, this.checkString(s)));
+    this.inputCommands.put("red-component", (s) -> new ImageGreyscaleIO("red-component", this.checkString(s),
+            this.model, this.checkString(s)));
+    this.inputCommands.put("green-component",
+            (s) -> new Greyscale("green-component", this.checkString(s),
+                    this.model, this.checkString(s)));
   }
 
 
@@ -96,8 +96,8 @@ public class ImageGUIControllerImpl extends AbstractController implements ImageG
     input = this.checkString(this.input);
     ImageCommands command;
     Function<Scanner, ImageCommands> commandMap = this.inputCommands.getOrDefault(input,
-            null);
-    if (commandMap == null) {
+            inputCommands.get(""));
+    if (commandMap.equals(null)) {
       System.out.println("Invalid command" + input);
     }else{
       try{

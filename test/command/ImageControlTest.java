@@ -29,8 +29,6 @@ public class ImageControlTest {
   ImageControlIO save3;
   ImageControlIO load4;
   ImageControlIO save4;
-  ImageControlIO load5;
-  ImageControlIO save5;
 
   @Before
   public void setUp() {
@@ -56,15 +54,13 @@ public class ImageControlTest {
   }
 
   @Test
-  public void testLoadAndSave() {
+  public void LoadSaveTest() {
 
-    BufferedImage jpeg1 = this.model2.retrieveIOImage("jpg1");
-    assertEquals(new Color(3, 4, 6), new Color(jpeg1.getRGB(0, 0)));
-    assertEquals(new Color(6, 7, 9), new Color(jpeg1.getRGB(0, 1)));
-    assertEquals(new Color(8, 9, 11), new Color(jpeg1.getRGB(0, 2)));
-    assertEquals(new Color(9, 10, 12), new Color(jpeg1.getRGB(1, 0)));
-    assertEquals(new Color(11, 12, 14), new Color(jpeg1.getRGB(1, 1)));
-    assertEquals(new Color(14, 15, 17), new Color(jpeg1.getRGB(1, 2)));
+    BufferedImage jpg1 = this.model2.retrieveIOImage("jpg1");
+    assertEquals(new Color(10, 40, 50), new Color(jpg1.getRGB(0, 0)));
+    assertEquals(new Color(20, 50, 60), new Color(jpg1.getRGB(0, 1)));
+    assertEquals(new Color(30, 40, 70), new Color(jpg1.getRGB(0, 2)));
+
   }
 }
 

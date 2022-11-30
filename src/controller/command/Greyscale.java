@@ -3,7 +3,7 @@ package controller.command;
 import java.awt.Color;
 
 import model.ImageModel;
-import util.Pixel;
+import Color.Pixel;
 
 // Create a greyscale image with the red-component of the image with the given name,
 // and refer to it henceforth in the program by the given destination name. Similar commands
@@ -59,7 +59,7 @@ public class Greyscale extends AbstractPPMCommands {
       case "luma-component":
         return Pixel.luma(color);
       default:
-        throw new IllegalArgumentException("No such command" + commandType + "exists");
+        throw new IllegalArgumentException("This command does not exists");
     }
   }
 

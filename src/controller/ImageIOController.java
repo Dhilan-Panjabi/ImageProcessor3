@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import controller.command2.ImageColorTransformationIO;
 import controller.command2.ImageControlIO;
@@ -37,15 +38,10 @@ public class ImageIOController extends AbstractController {
    */
   public ImageIOController(ImageIOModel model, ImageView view, Readable input) {
     super(model, view, input);
-    if (model == null) {
+    if (model == null || view == null || input == null) {
       throw new IllegalArgumentException("please provide values for input, view, model");
     }
-    if (view == null) {
-      throw new IllegalArgumentException("please provide values for input, view, model");
-    }
-    if (input == null) {
-      throw new IllegalArgumentException("please provide values for input, view, model");
-    }
+    this.view = view;
     this.inputCommands.put("load", (s) -> new ImageControlIO("load",
             this.checkString(s),
             this.checkString(s), this.model));

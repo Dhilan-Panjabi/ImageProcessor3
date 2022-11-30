@@ -48,15 +48,16 @@ public abstract class AbstractPPMCommands implements ImageCommands {
     if (commandType == null) {
       throw new IllegalArgumentException("must give a valid command");
     }
+
     this.newUserImageName = newUserImageName;
     this.userImageName = userimageName;
     this.model = model;
-    this.commandType = commandType;
     Color[][] image = this.model.retrieveImage(userimageName);
-    this.image = image;
     this.row = image.length;
     this.col = image[0].length;
     this.processedImage = new Color[this.row][this.col];
+    this.commandType = commandType;
+    this.image = image;
   }
 
   /**

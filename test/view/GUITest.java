@@ -20,7 +20,7 @@ public class GUITest {
   StringBuilder viewOutLog;
 
   @Before
-  public void setUP() {
+  public void setup() {
 
     this.model = new ImageGUIModelImpl();
     this.controller = new ImageGUIControllerImpl(model);
@@ -31,25 +31,23 @@ public class GUITest {
   }
 
   @Test
-  public void testFeaturesAndModel() {
+  public void modelFeaturesTest() {
 
     this.controller.updateModel();
+    String currentLog =  "renderImage koala name" + System.lineSeparator();
     assertEquals("koala", this.model.getImageWhichLoaded());
     assertEquals("koala", this.controller.getImageName());
     assertEquals("", this.viewOutLog.toString());
-    String currentLog =  "renderImage called with the name koala" + System.lineSeparator();
     assertEquals(currentLog, this.viewInLog.toString());
 
     this.controller.doInputCommands("load rec/Koala.ppm koala");
     assertEquals("koala", this.model.getImageWhichLoaded());
     assertEquals("koala", this.controller.getImageName());
-    assertEquals("", this.viewOutLog.toString());
     assertEquals(currentLog, this.viewInLog.toString());
 
     this.controller.returnInstruction();
     assertEquals("koala", this.model.getImageWhichLoaded());
     assertEquals("koala", this.controller.getImageName());
-    currentLog = currentLog + "renderMessage method: this" + System.lineSeparator();
     assertEquals(currentLog, this.viewInLog.toString());
 
     String instructions = ("\tWith the given instructions the given user inputs can be the following:\n" +
@@ -92,15 +90,6 @@ public class GUITest {
             + System.lineSeparator();
     assertEquals(instructions, this.viewOutLog.toString());
     assertEquals(currentLog, this.viewInLog.toString());
-
-    try {
-      this.controller.processGivenCommands();
-    } catch (NullPointerException e) {
-      assertEquals("koala", this.model.getImageWhichLoaded());
-      assertEquals("koala", this.controller.getImageName());
-      assertEquals("", this.viewOutLog.toString());
-      assertEquals(currentLog, this.viewInLog.toString());
-    }
 
   }
 

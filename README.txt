@@ -148,6 +148,16 @@ ImageUtil:
     -This has the methods which take in the ppm and has the methods to change it to a bufferImage, also has the ability to change a bufferImage back into ppm.
     similar to how we have the readPPMfile we needed to make one for the IO as well to read images of different file types.
 
+Images Used:
+
+    - snail.bmp
+        citation: https://www.google.com/url?sa=i&url=https%3A%2F%2Fpeople.math.sc.edu%2FBurkardt%2Fdata%2Fbmp%2Fbmp.html&psig=AOvVaw2zJSSmwpFZGBWiwguTYEsx&ust=1669333345729000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKCUn8G9xfsCFQAAAAAdAAAAABAF.
+
+    - tiger.jpg
+        citation: https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F1360055038%2Fphoto%2Fclose-up-view-portrait-of-a-siberian-tiger.jpg%3Fb%3D1%26s%3D170667a%26w%3D0%26k%3D20%26c%3D-nm1uu87whZtUQI3xObQQg6GaRY1wV-j6a5Ay9_pqkM%3D&imgrefurl=https%3A%2F%2Funsplash.com%2Fimages%2Fanimals%2Ftiger&tbnid=MH5UIeeidcj3NM&vet=12ahUKEwjC98aAv8X7AhXwm44IHYnLBOMQMyhIegUIARCBAQ..i&docid=j5wz8Q0r58pXjM&w=380&h=452&q=tiger%20jpg%5D&ved=2ahUKEwjC98aAv8X7AhXwm44IHYnLBOMQMyhIegUIARCBAQ
+
+    - smallImage.ppm
+        citation: https://www.google.com/imgres?imgurl=http%3A%2F%2Fweb.eecs.utk.edu%2F~ssmit285%2Fguide%2Fimg%2Fimg%2FTiny6pixel.png&imgrefurl=http%3A%2F%2Fweb.eecs.utk.edu%2F~ssmit285%2Fguide%2Fimg%2Findex.html&tbnid=G7tKWSpqWdojUM&vet=12ahUKEwjTubn2v8X7AhU2gI4IHegDChQQMygCegQIARBD..i&docid=48reNDb6aHxieM&w=192&h=128&q=Tiny%20pixel%20ppm&ved=2ahUKEwjTubn2v8X7AhU2gI4IHegDChQQMygCegQIARBD
 
 
 

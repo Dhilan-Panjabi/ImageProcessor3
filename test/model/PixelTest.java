@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-import util.Pixel;
+import Color.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,10 +22,6 @@ public class PixelTest {
 
   Pixel pixel3;
 
-  Pixel pixel4;
-
-  Pixel pixel5;
-
   Color color1;
 
   Color color2;
@@ -39,7 +35,7 @@ public class PixelTest {
 
     this.color2 = new Color(234, 45, 8);
 
-    this.color3 = new Color(200, 78, 98);
+    this.color3 = new Color(30, 78, 98);
 
   }
 
@@ -66,10 +62,10 @@ public class PixelTest {
   }
 
   @Test
-  public void testToString() {
+  public void toStringTest() {
     assertEquals("r: 0,g: 0,b: 0", this.pixel1.toString());
     assertEquals("r: 239,g: 31,b: 31", this.pixel2.toString());
-    assertEquals("r: 255,g: 255,b: 255", this.pixel5.toString());
+    assertEquals("r: 255,g: 255,b: 255", this.pixel3.toString());
   }
 
 }
